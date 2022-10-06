@@ -1,0 +1,33 @@
+<form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous" class="grid gap-2 grid-cols-2 w-full">
+
+    <mat-form-field appearance="outline" class="w-full mr-2">
+        <mat-label>Fecha</mat-label>
+        <input
+            matInput
+            [formControlName]="'fecha1'"
+            [matDatepicker]="picker"
+            (keyup)="cambioFechas()"
+            >
+            
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Fecha</mat-label>
+        <input
+            matInput
+            [formControlName]="'fecha2'"
+            [matDatepicker]="picker2"
+            (ngModelChange)="cambioFechas()"
+            >
+            
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+</form>
+
+<div>
+    <button mat-button (click)="generarExcel()">Aceptar</button>
+    <button mat-button>Cancelar</button>
+</div>

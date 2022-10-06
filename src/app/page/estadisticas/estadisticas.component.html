@@ -1,0 +1,105 @@
+<section class="px-10 overflow-hidden">
+
+  <div class="flex justify-between my-10 w-full">
+    <h2 class="text-3xl font-bold">Estadísticas</h2>
+  </div>
+
+  <div>
+      <form [formGroup]="filtroEstadisticasForm" crossOrigin="Anonymous" class="grid gap-2 grid-cols-3">
+        <mat-form-field class="w-full mr-2">
+            <mat-label>Fecha inicio</mat-label>
+            <input
+                (ngModelChange)="search($event)"
+                matInput
+                [formControlName]="'fecha1'"
+                [matDatepicker]="picker"
+                >
+                
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Fecha fin</mat-label>
+            <input
+                (ngModelChange)="search($event)"
+                matInput
+                [formControlName]="'fecha2'"
+                [matDatepicker]="picker2"
+                >
+                
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </form>
+  </div>
+
+  <div class="flex flex-row">
+    <div>
+      <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="despachados"
+      [gradient]="gradient"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+      >
+      </ngx-charts-advanced-pie-chart>
+    </div>
+
+    <div>
+      <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="pagados"
+      [gradient]="gradient"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+      >
+      </ngx-charts-advanced-pie-chart>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <ngx-charts-bar-horizontal
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="conductores"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+      </ngx-charts-bar-horizontal>
+    </div>
+
+    <div>
+      <ngx-charts-bar-horizontal
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="descargas"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel2"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)">
+      </ngx-charts-bar-horizontal>
+    </div>
+  </div>
+
+</section>

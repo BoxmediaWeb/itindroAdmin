@@ -1,0 +1,45 @@
+<section>
+
+    <div class="flex justify-between mb-4 w-full">
+        <h2 class="text-2xl font-bold">Crear tipo concreto</h2>
+    </div>
+
+    <form [formGroup]="filtroPedidoForm" crossOrigin="Anonymous">
+    
+        <div class="w-full">
+            <mat-form-field appearance="outline" class="w-full mb-0">
+                <mat-label>Nombre</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'nombre'"
+                    >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full mb-0">
+                <mat-label>Precio</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'precio'"
+                    >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full mb-0">
+                <mat-label>Unidad medida</mat-label>
+                <mat-select [formControlName]="'unidad_medida'">
+                    <mat-option [value]="'m3'">M³</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    
+        <div>
+            <button (click)="cerrarModal()" mat-button>
+                Cancelar
+            </button>
+
+            <button mat-button class="bg-[#0f172a] text-white" (click)="guardarConcreto()">
+                Guardar
+            </button>
+        </div>
+    
+    </form>
+</section>

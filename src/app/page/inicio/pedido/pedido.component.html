@@ -1,0 +1,225 @@
+<section class="h-full overflow-y-scroll">
+    <form [formGroup]="pedidoForm" crossOrigin="Anonymous">
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+
+            <div class="overflow-hidden w-full flex flex-row justify-start content-start justify-items-start items-start">
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Cliente</mat-label>
+                    <mat-select matInput [formControlName]="'clienteId'" class="w-full">
+                        <mat-option (click)="setNombreCliente(cliente)" [value]="cliente.id" *ngFor="let cliente of dataCliente">{{cliente.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="mt-2 ml-2">
+                    <button (click)="crearCliente()" mat-mini-fab class="bg-[#F9A825] color-white text-white align-top"><mat-icon
+                        class="hidden sm:flex icon-size-5 color-white"
+                        [svgIcon]="'heroicons_outline:refresh'"></mat-icon></button>    
+                </div>
+                
+            </div>
+
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Fecha</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'fecha_despacho'"
+                    [matDatepicker]="picker"
+                    >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+
+            <div class="overflow-hidden w-full flex flex-row justify-start content-start justify-items-start items-start">
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Tipo concreto</mat-label>
+                    <mat-select matInput [formControlName]="'concretoId'" class="w-full">
+                        <mat-option (click)="setNombreConcreto(concreto)" [value]="concreto.id" *ngFor="let concreto of dataConcreto">{{concreto.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="mt-2 ml-2">
+                    <button mat-mini-fab class="bg-[#F9A825] color-white text-white align-top" (click)="crearConcreto()"><mat-icon
+                        class="hidden sm:flex icon-size-5 color-white"
+                        [svgIcon]="'heroicons_outline:refresh'"></mat-icon></button>    
+                </div>
+            </div>
+
+
+            
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Hora en cargue</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'hora_cargue'"
+                    type="time"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:clock'"></mat-icon>
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Metros3</mat-label>
+                <input
+                (ngModelChange)="setValorPedido($event)"
+                type="number"
+                    matInput
+                    [formControlName]="'m3'"
+                    >
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Hora en obra</mat-label>
+                <input
+                type="time"
+                    matInput
+                    [formControlName]="'hora_obra'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:clock'"></mat-icon>
+            </mat-form-field>
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Valor</mat-label>
+                <input
+                    type="number"
+                    matInput
+                    [formControlName]="'valor'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:currency-dollar'"></mat-icon>
+            </mat-form-field>
+    
+            <div class="overflow-hidden w-full flex flex-row justify-start content-start justify-items-start items-start">
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Vendedor</mat-label>
+                    <mat-select matInput [formControlName]="'vendedoreId'" class="w-full">
+                        <mat-option (click)="setNombreVendedor(vendedor.nombre)" [value]="vendedor.id" *ngFor="let vendedor of dataVendedor">{{vendedor.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="mt-2 ml-2">
+                    <button (click)="crearVendedor()" mat-mini-fab class="bg-[#F9A825] color-white text-white align-top"><mat-icon
+                        class="hidden sm:flex icon-size-5 color-white"
+                        [svgIcon]="'heroicons_outline:refresh'"></mat-icon></button>    
+                </div>
+            </div>
+
+
+        </div>
+    
+        <div class="w-full mb-5">
+            <span class="font-bold text-1xl">Valor unitario:</span>${{precioConcreto}}
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Plazo pagos(Días)</mat-label>
+                <input
+                    type="number"
+                    matInput
+                    [formControlName]="'plazo_pagos'"
+                    >
+            </mat-form-field>
+    
+            <div class="overflow-hidden w-full flex flex-row justify-start content-start justify-items-start items-start">
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Conductor</mat-label>
+                    <mat-select matInput [formControlName]="'conductoreId'" class="w-full">
+                        <mat-option (click)="setNombreConductor(conductor.nombre)" [value]="conductor.id" *ngFor="let conductor of dataConductor">{{conductor.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="mt-2 ml-2">
+                    <button (click)="crearConductor()" mat-mini-fab class="bg-[#F9A825] color-white text-white align-top"><mat-icon
+                        class="hidden sm:flex icon-size-5 color-white"
+                        [svgIcon]="'heroicons_outline:refresh'"></mat-icon></button>    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Dirección entrega</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'direccion'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:office-building'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Estado</mat-label>
+                <mat-select matInput [formControlName]="'estado'" class="w-full">
+                    <mat-option [value]="'en revision'">Revisión</mat-option>
+                    <mat-option [value]="'programado'">Programado</mat-option>
+                    <mat-option [value]="'despachado'">Despachado</mat-option>
+                    <mat-option [value]="'cancelado'">Cancelada</mat-option>
+                    <mat-option [value]="'en_descarga'">En descarga</mat-option>
+                    <mat-option [value]="'finalizado'">Finalizado</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+    
+        <div class="grid gap-2 grid-cols-2 w-full">
+
+            <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                <mat-label>Tipo descarga</mat-label>
+                <mat-select matInput [formControlName]="'descarga'" class="w-full">
+                    <mat-option value="Directa">Directa</mat-option>
+                    <mat-option value="SP 500">SP 500</mat-option>
+                    <mat-option value="SP 750">SP 750</mat-option>
+                    <mat-option value="Autobomba 1">Autobomba 1</mat-option>
+                    <mat-option value="Autobomba 2">Autobomba 2</mat-option>
+                    <mat-option value="Reeds A40">Reeds A40</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="w-full mr-2">
+                <mat-label>Observaciones</mat-label>
+                <input
+                    matInput
+                    [formControlName]="'observaciones'"
+                    >
+                <mat-icon
+                    matSuffix
+                    class="hidden sm:flex icon-size-5"
+                    [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
+            </mat-form-field>
+        </div>
+    
+        <div>
+            <button mat-button>
+                Cancelar
+            </button>
+    
+            <button mat-button *ngIf="!data.id" (click)="guardarPedido()">
+                Guardar
+            </button>
+
+            <button mat-button *ngIf="data.id" (click)="editarPedido()">
+                Editar
+            </button>
+        </div>
+    
+    </form>
+</section>
