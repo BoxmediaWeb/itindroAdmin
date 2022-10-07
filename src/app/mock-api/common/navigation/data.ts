@@ -10,6 +10,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/inicio'
     },
     {
+        id   : 'usuarios',
+        title: 'Usuarios',
+        type : 'basic',
+        icon : 'heroicons_outline:user-circle',
+        link : '/usuarios'
+    },/*
+    {
         id   : 'calendario',
         title: 'Calendario',
         type : 'basic',
@@ -36,7 +43,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:cash',
         link : '/pagos'
-    },
+    },*//*
     {
         id   : 'configuraciones',
         title: 'Configuraciones',
@@ -65,7 +72,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/estadisticas'
             },
         ]
-    },
+    },*/
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {

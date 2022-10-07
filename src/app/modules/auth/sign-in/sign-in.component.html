@@ -2,19 +2,19 @@
     <div class="md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card">
         <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
             <!-- Logo -->
-            <div class="w-30">
-                <img src="assets/images/logo/logo-text-on-dark.png">
+            <div class="w-50">
+                <img src="assets/images/logo/itindro-logo-color.png">
             </div>
 
             <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Ingresar</div>
+            <!--<div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Ingresar</div>
             <div class="flex items-baseline mt-0.5 font-medium">
                 <div>Don't have an account?</div>
                 <a
                     class="ml-1 text-primary-500 hover:underline"
                     [routerLink]="['/sign-up']">Sign up
                 </a>
-            </div>
+            </div>-->
 
             <!-- Alert -->
             <fuse-alert
@@ -35,22 +35,22 @@
 
                 <!-- Nick field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Nick</mat-label>
+                    <mat-label>Usuario</mat-label>
                     <input
                         id="nick"
                         matInput
                         [formControlName]="'nick'">
                     <mat-error *ngIf="signInForm.get('nick').hasError('required')">
-                        Nick is required
+                        Usuario obligatorio
                     </mat-error>
                     <mat-error *ngIf="signInForm.get('nick').hasError('nick')">
-                        Please enter a valid Nick
+                        Ingrese un usuario válido
                     </mat-error>
                 </mat-form-field>
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
+                    <mat-label>Contraseña</mat-label>
                     <input
                         id="password"
                         matInput
@@ -63,11 +63,11 @@
                         (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
                         matSuffix>
                         <mat-icon
-                            class="icon-size-5"
+                            class="icon-size-5 text-[#ff3d00]"
                             *ngIf="passwordField.type === 'password'"
                             [svgIcon]="'heroicons_solid:eye'"></mat-icon>
                         <mat-icon
-                            class="icon-size-5"
+                            class="icon-size-5 text-[#ff3d00]"
                             *ngIf="passwordField.type === 'text'"
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
@@ -92,13 +92,13 @@
                 <!-- Submit button -->
                 <!--[color]="'primary'"-->
                 <button
-                    class="fuse-mat-button-large w-full mt-6 bg-[#383838] text-white"
+                    class="fuse-mat-button-large w-full mt-6 bg-gradient-to-r bg-[#FF3D00] text-white"
                     mat-flat-button
                     
                     [disabled]="signInForm.disabled"
                     (click)="signIn()">
                     <span *ngIf="!signInForm.disabled">
-                        Sign in
+                        Entrar
                     </span>
                     <mat-progress-spinner
                         *ngIf="signInForm.disabled"
@@ -107,14 +107,14 @@
                 </button>
 
                 <!-- Separator -->
-                <div class="flex items-center mt-8">
+                <!--<div class="flex items-center mt-8">
                     <div class="flex-auto mt-px border-t"></div>
                     <div class="mx-2 text-secondary">Or continue with</div>
                     <div class="flex-auto mt-px border-t"></div>
-                </div>
+                </div>-->
 
                 <!-- Single sign-on buttons -->
-                <div class="flex items-center mt-8 space-x-4">
+                <!--<div class="flex items-center mt-8 space-x-4">
                     <button
                         class="flex-auto"
                         type="button"
@@ -139,11 +139,11 @@
                             class="icon-size-5"
                             [svgIcon]="'feather:github'"></mat-icon>
                     </button>
-                </div>
+                </div>-->
             </form>
         </div>
     </div>
-    <div class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-[url('assets/images/banner.jpg')] dark:border-l">
+    <div class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-[url('assets/images/banner.jpg')] bg-center dark:border-l">
         <!-- Background - @formatter:off -->
         <!-- Rings -->
         <!--<svg class="absolute inset-0 pointer-events-none"
@@ -166,12 +166,12 @@
         <!-- @formatter:on -->
         <!-- Content -->
         <div class="z-10 relative w-full max-w-2xl">
-            <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Somos productores</div>
-                <div>a nivel industrial</div>
+            <div class="text-6xl font-bold leading-none text-[#2c3b41]">
+                <div>Programa de Gestión</div>
+                <div>Documental Automatizada</div>
             </div>
-            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                de todo tipo concretos y agregados pétreos para la construcción.
+            <div class="mt-6 text-lg tracking-tight leading-6 text-[#2c3b41]">
+                Bienvenido.
             </div>
             <!--<div class="flex items-center mt-8">
                 <div class="flex flex-0 items-center -space-x-1.5">
