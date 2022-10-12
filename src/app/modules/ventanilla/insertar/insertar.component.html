@@ -1,0 +1,238 @@
+<div class="flex flex-col w-full">
+
+    <div class="border-b pb-2 mt-10 text-3xl font font-bold upercase">
+        <h2> Nueva Comunicación Recibida</h2>
+    </div>
+
+    <div class="w-full">
+
+                <form [formGroup]="perfilForm" class="w-full">
+                    
+                    <div class="border-b pb-2 mt-10 text-xl font font-bold upercase">
+                        <h2>Descripción del Remitente</h2>
+                    </div>
+                
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+
+                        <div class="flex flex-row align-center items-end justify-bottom">
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Remitente</mat-label>
+                                <input
+                                    matInput
+                                    [formControlName]="'remitente'"
+                                    [placeholder]="'Job title'">
+                            </mat-form-field>
+                            
+                            <button
+                                (click)="insertarRemitente()"
+                                class="ml-2 mb-2 bg-[#ff7043]"
+                                mat-mini-fab
+                                ><!--[disabled]="perfilForm.invalid"-->
+                                    <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                            </button>
+                        </div>
+
+
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Funcionario</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'funcionario'"
+                                [placeholder]="'Job title'">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Cargo</mat-label>
+                                <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:identification'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'cargo'"
+                                    [placeholder]="'Company'">
+                            </mat-form-field>
+
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Fecha suscripción</mat-label>
+                                <input
+                                    matInput
+                                    [formControlName]="'fechaSuscripcion'"
+                                    [placeholder]="'Company'"
+                                    [matDatepicker]="picker"
+                                    >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+                    </div>
+
+                    <div class="border-b pb-2 mt-10 text-xl font font-bold upercase">
+                        <h2>Descripción del Destinatario</h2>
+                    </div>
+                
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5" >
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Destinatario</mat-label>
+                                <input
+                                    id="fecha"
+                                    matInput
+                                    [formControlName]="'destinatario'"
+                                    >
+                            </mat-form-field>
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Tiempo de respuesta(días)</mat-label>
+                                <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:calendar'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'tiempoRespuesta'"
+                                    [placeholder]="'Company'"
+                                    type="number">
+                            </mat-form-field>
+                        
+                    </div>
+
+                    <div class="border-b pb-2 mt-10 text-xl font font-bold upercase">
+                        <h2>Descripción documento</h2>
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-1 mt-5">
+                        <!-- Title -->
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Descripción</mat-label>
+                                <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'descripcion'"
+                                    [placeholder]="'Company'">
+                            </mat-form-field>
+                        
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-1 mt-5">
+                        <!-- Title -->
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Resumen</mat-label>
+                                <textarea matInput [formControlName]="'resumen'" cols="30" rows="10"></textarea>
+                            </mat-form-field>
+                        
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+                        <!-- Title -->
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Anexos</mat-label>
+                                <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:paper-clip'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'anexos'"
+                                    [placeholder]="'Job title'">
+                            </mat-form-field>
+
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Folios</mat-label>
+                                <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:collection'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'folios'"
+                                    [placeholder]="'Company'">
+                            </mat-form-field>
+                        
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+                        <!-- Title -->
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                                <mat-label>Tipo de documento</mat-label>
+                                <mat-select matInput [formControlName]="'tipoDocumento'" class="w-full">
+                                    <mat-option [value]="'correo electronico'">Correo electrónico</mat-option>
+                                    <mat-option [value]="'informacion'">Información</mat-option>
+                                    <mat-option [value]="'peticion'">Petición</mat-option>
+                                    <mat-option [value]="'pqrsdf siau'">PQRSDF - SIAU</mat-option>
+                                    <mat-option [value]="'queja'">Queja</mat-option>
+                                    <mat-option [value]="'reclamo'">Reclamo</mat-option>
+                                    <mat-option [value]="'solicitud'">Solicitud</mat-option>
+                                    <mat-option [value]="'tutelas'">Tutelas</mat-option>
+                                    <mat-option [value]="'otros'">Otros</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                    </div>
+
+                    
+                    <div class="border-b pb-2 mt-10 text-xl font font-bold upercase">
+                        <h2>Descripción del Responsable</h2>
+                    </div>
+                
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+                        <!-- Title -->
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Responsable</mat-label>
+                                <input
+                                    matInput
+                                    [formControlName]="'responsable'"
+                                    [placeholder]="'Job title'">
+                            </mat-form-field>
+
+                        
+                            <mat-form-field class="fuse-mat-no-subscript w-full">
+                                <mat-label>Con copia a</mat-label>
+                                <mat-icon
+                                    matPrefix
+                                    class="hidden sm:flex icon-size-5"
+                                    [svgIcon]="'heroicons_outline:document-duplicate'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControlName]="'conCopia'"
+                                    [placeholder]="'Company'">
+                            </mat-form-field>
+                        
+                    </div>
+
+                            <!-- Actions -->
+                            <div class="flex justify-end mt-10 py-4">
+
+                                <button
+                                    class="ml-2"
+                                    mat-flat-button
+                                    [color]="'primary'"
+                                    [disabled]="perfilForm.invalid">
+                                    Registrar
+                                </button>
+
+                            </div>
+                
+                </form>
+
+    </div>
+</div>

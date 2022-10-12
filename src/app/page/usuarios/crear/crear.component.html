@@ -91,9 +91,8 @@
                         </div>
                     </div>
                 
-                    <div class="flex  pl-6 pr-6" *ngIf="perfilForm.value.role || tipo!='usuarios' || idEditar">
-                        <!-- Title -->
-                        <div class="mt-8 w-full">
+                    <div class="grid gap-2 grid-cols-1 md:grid-cols-2 mt-5" *ngIf="perfilForm.value.role || tipo!='usuarios' || idEditar">
+                        
                             <mat-form-field class="fuse-mat-no-subscript w-full">
                                 <mat-label>Nombres</mat-label>
                                 <input
@@ -101,10 +100,7 @@
                                     [formControlName]="'nombres'"
                                     [placeholder]="'Job title'">
                             </mat-form-field>
-                        </div>
-                
-                        <!-- Company -->
-                        <div class="mt-8 w-full ml-2">
+                        
                             <mat-form-field class="fuse-mat-no-subscript w-full">
                                 <mat-label>Apellidos</mat-label>
                                 <input
@@ -112,7 +108,7 @@
                                     [formControlName]="'apellidos'"
                                     [placeholder]="'Company'">
                             </mat-form-field>
-                        </div>
+                        
                     </div>
 
                     <div class="flex  pl-6 pr-6" *ngIf="perfilForm.value.role || tipo!='usuarios' || idEditar">
@@ -318,7 +314,4 @@
                 </form>
 
     </div>
-</div>  
-        
-        
-
+</div>

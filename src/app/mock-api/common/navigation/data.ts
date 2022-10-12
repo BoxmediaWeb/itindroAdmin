@@ -10,12 +10,37 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/inicio'
     },
     {
+        id   : 'ventanilla',
+        title: 'Ventanilla única',
+        type : 'collapsable',
+        icon : 'heroicons_outline:archive',
+        children: [
+            {
+                id   : 'ventanilla',
+                title: 'Ventanilla',
+                type : 'basic',
+                icon : 'heroicons_outline:archive',
+                link : '/ventanilla'
+            },
+            {
+                id   : 'terceros',
+                title: 'Terceros',
+                type : 'basic',
+                icon : 'heroicons_outline:user-group',
+                link : '/terceros'
+            }
+        ]
+    },
+    {
         id   : 'usuarios',
         title: 'Usuarios',
         type : 'basic',
         icon : 'heroicons_outline:user-circle',
         link : '/usuarios'
-    },/*
+    },
+    
+    
+    /*
     {
         id   : 'calendario',
         title: 'Calendario',

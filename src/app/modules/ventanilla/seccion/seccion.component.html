@@ -1,0 +1,94 @@
+<section class="flex flex-col w-full min-h-[1000px]">
+    <div class="flex justify-between my-10 w-full">
+        <h2 class="text-3xl font-bold">Ventanilla única</h2>
+    </div>
+            
+    <div class="flex justify-center">
+    
+
+        <div class="flex justify-start w-full">
+            <form [formGroup]="filtroForm" class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                    
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_outline:search'"></mat-icon>
+                    <input
+                        (ngModelChange)="buscarNombre($event)"
+                        matInput
+                        [formControlName]="'nombre'">
+                </mat-form-field>
+
+            </form>
+        </div>
+
+        <!--
+        <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+        </mat-paginator>
+        -->
+    
+        </div>
+        <div class="my-5">
+            <div class="flex justify-end">
+                <button class="bg-[#C62828] text-white" mat-button>PDF</button>
+                <button class="ml-2 bg-[#016e38] text-white" mat-button>Excel</button>
+            </div>
+        </div>
+        <div class="w-full overflow-x-scroll">
+            <table mat-table [dataSource]="dataSource" class="rounded-6xl w-[2000px] p-5">
+            
+                <ng-container matColumnDef="radicado">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Radicado </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"><button mat-button><mat-icon [svgIcon]="'heroicons_outline:folder-open'"></mat-icon></button> {{element?.radicado}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="remitente">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Remitente </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.remitente}} </td>
+                </ng-container>
+                      
+                <ng-container matColumnDef="destinatario">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Destinatario </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.destinatario}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="responsable">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Responsable </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.responsable}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="asunto">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Asunto </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.asunto}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Fecha </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.fecha}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Estado </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.estado}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="adjunto">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Adjunto </th>
+                    <td mat-cell *matCellDef="let element" class="text-center flex justify-center">
+                        <mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:'+ (element.adjunto?'check-circle':'x-circle')"></mat-icon>
+                    </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="trazabilidad">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Trazabilidad </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        <button (click)="trazabilidadModal(element)"><mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:external-link'"></mat-icon></button>
+                    </td>
+                </ng-container>
+                      
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</section>

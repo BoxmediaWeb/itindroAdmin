@@ -56,7 +56,9 @@ import { CalendarioComponent } from './page/calendario/calendario.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
+import { VentanillaComponent } from './modules/ventanilla/ventanilla.component';
+import { TercerosComponent } from './modules/terceros/terceros.component';
 
 
 
@@ -81,7 +83,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         UsuariosComponent,
         AprobacionesComponent,
         EstadisticasComponent,
-        CalendarioComponent
+        CalendarioComponent,
+        VentanillaComponent,
+        TercerosComponent
     ],
     imports     : [
         BrowserModule,

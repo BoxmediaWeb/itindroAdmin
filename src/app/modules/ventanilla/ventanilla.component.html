@@ -1,0 +1,154 @@
+<section class="bg-white w-full">
+
+    <mat-drawer-container class="flex-auto sm:h-full">
+        <mat-drawer class="sm:w-90 dark:bg-gray-900" #drawer [autoFocus]="false" [mode]="drawerMode" [opened]="drawerOpened">
+            <div class="flex items-center justify-between m-8 mr-6 sm:my-10">
+                <!-- Title -->
+                <div class="text-3xl font-extrabold tracking-tight leading-none">Opciones</div>
+                <!-- Close button -->
+                <div class="lg:hidden">
+                    <button
+                        mat-icon-button
+                        (click)="drawer.close()">
+                        <!--<mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>-->
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col divide-y border-t border-b">
+                <ng-container *ngFor="let panel of panels">
+                    <div
+                        *ngIf="panel.type=='group'"
+                        class="flex py-3 cursor-pointer mt-5"
+                        [ngClass]="{'hover:bg-gray-100 dark:hover:bg-hover': !selectedPanel || selectedPanel !== panel.id,
+                                    'bg-[#383838] text-white dark:bg-hover': selectedPanel && selectedPanel === panel.id}"
+                        
+                        ><!--(click)="goToPanel(panel.id)"-->
+                        <mat-icon
+                            [ngClass]="{'text-hint': !selectedPanel || selectedPanel !== panel.id,
+                                        'text-white dark:text-primary-500': selectedPanel && selectedPanel === panel.id}"
+                            [svgIcon]="panel.icon"></mat-icon>
+                        <div class="ml-3">
+                            <div
+                                class="font-bold leading-6 uppercase"
+                                [ngClass]="{'text-[#E65100] dark:text-[#01579B]': selectedPanel && selectedPanel === panel.id}">
+                                {{panel.title}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-container *ngFor="let item of panel.children">
+                        <div
+                        (click)="goToPanel(item)"
+                        class="flex px-8 py-2 cursor-pointer"
+                        [ngClass]="{'text-white' : selectedPanel && selectedPanel === item.id}">
+                            
+                            <mat-icon
+                            [ngClass]="{'text-hint': !selectedPanel || selectedPanel !== item.id,
+                                        'text-[#BF360C] dark:text-primary-500': selectedPanel && selectedPanel === item.id}"
+                            [svgIcon]="item.icon"></mat-icon>
+
+                            <div
+                            class="ml-2 font-medium leading-6"
+                            [ngClass]="{'text-[#BF360C] dark:text-primary-500': selectedPanel && selectedPanel === item.id}">
+                                {{item.title}}
+                            </div>
+
+                        </div>
+
+                    </ng-container>
+
+            
+                    <div class="pt-2 w-full">
+                        <button
+                            *ngIf="panel.title=='externas' || panel.title=='tipologias'"
+                            (click)="insertar(panel)"
+                            class="mx-6 bg-[#ff7043] text-white"
+                            mat-flat-button>
+                            <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                            <span class="ml-2">Redactar</span>
+                        </button>
+                    </div>
+
+                </ng-container>
+            </div>
+        </mat-drawer>
+
+        
+        <!-- Drawer content -->
+        <mat-drawer-content class="flex flex-col px-5">
+            <router-outlet></router-outlet>
+            <!--<div class="flex justify-between my-10 w-full">
+                <h2 class="text-3xl font-bold">Ventanilla única</h2>
+            </div>
+        
+            <div class="flex justify-center">
+                <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+                </mat-paginator>
+            </div>
+            <div>
+                <div class="flex justify-end">
+                    <button class="bg-[#EF9A9A] text-[#B71C1C]" mat-button><mat-icon class="hidden text-[#B71C1C] sm:flex icon-size-5" [svgIcon]="'heroicons_outline:document-text'"></mat-icon>PDF</button>
+                    <button class="ml-2 bg-[#C8E6C9] text-[#1B5E20]" mat-button><mat-icon class="hidden text-[#1B5E20] sm:flex icon-size-5" [svgIcon]="'heroicons_outline:table'"></mat-icon> Excel</button>
+                </div>
+            </div>
+            <div class="w-full overflow-x-scroll">
+                <table mat-table [dataSource]="dataSource" class="rounded-6xl w-[2000px] p-5">
+        
+                    <ng-container matColumnDef="radicado">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Radicado </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"><button mat-button><mat-icon [svgIcon]="'heroicons_outline:folder-open'"></mat-icon></button> {{element?.radicado}} </td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="remitente">
+                      <th mat-header-cell *matHeaderCellDef class="text-center"> Remitente </th>
+                      <td mat-cell *matCellDef="let element" class="text-center"> {{element?.remitente}} </td>
+                    </ng-container>
+                  
+                    <ng-container matColumnDef="destinatario">
+                      <th mat-header-cell *matHeaderCellDef class="text-center"> Destinatario </th>
+                      <td mat-cell *matCellDef="let element" class="text-center"> {{element?.destinatario}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="responsable">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Responsable </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element?.responsable}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="asunto">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Asunto </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element?.asunto}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="fecha">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Fecha </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element?.fecha}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="estado">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Estado </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element?.estado}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="adjunto">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Adjunto </th>
+                        <td mat-cell *matCellDef="let element" class="text-center flex justify-center">
+                            <mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:'+ (element.adjunto?'check-circle':'x-circle')"></mat-icon>
+                        </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="trazabilidad">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Trazabilidad </th>
+                        <td mat-cell *matCellDef="let element" class="text-center">
+                           <button><mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:external-link'"></mat-icon></button>
+                        </td>
+                    </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>-->
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+</section>
