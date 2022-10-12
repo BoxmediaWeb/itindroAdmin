@@ -1,0 +1,51 @@
+<div class="flex flex-col w-full">
+
+    <div class="border-b text-3xl font font-bold upercase">
+        <h2>Funcionarios</h2>
+    </div>
+
+    <div class="w-full">
+
+        <form [formGroup]="funcionarioForm" class="w-full">
+                    
+            <div class="grid gap-2 grid-cols-1 w-full mt-5">
+                        
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Nombre</mat-label>
+                    <input
+                    matInput
+                    [formControlName]="'tipoDocumento'"
+                    [placeholder]="'nombre'">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full">
+                    <mat-label>Cargo</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'cargo'"
+                        [placeholder]="'Company'">
+                </mat-form-field>
+            </div>
+
+            <div class="flex justify-end mt-5 py-4">
+                <button
+                    class="ml-2"
+                    mat-flat-button
+                    [color]="'primary'"
+                    [disabled]="funcionarioForm.invalid">
+                    Guardar
+                </button>
+
+                <button
+                    class="ml-2"
+                    mat-flat-button
+                    [color]="'primary'"
+                    [disabled]="funcionarioForm.invalid">
+                    Cerrar
+                </button>
+            </div>
+                
+        </form>
+
+    </div>
+</div>

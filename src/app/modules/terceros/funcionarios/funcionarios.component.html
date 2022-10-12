@@ -1,0 +1,61 @@
+<section class="flex flex-col w-full min-h-[1000px] px-5">
+    <div class="flex justify-between my-10 w-full">
+        <h2 class="text-3xl font-bold">Funcionarios</h2>
+    </div>
+            
+    <div class="flex justify-center">
+    
+        <!--
+        <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+        </mat-paginator>
+        -->
+
+        <div class="flex justify-start w-full">
+            <form [formGroup]="filtroForm" class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                    
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_outline:search'"></mat-icon>
+                    <input
+                        (ngModelChange)="buscarNombre($event)"
+                        matInput
+                        [formControlName]="'nombre'">
+                </mat-form-field>
+
+            </form>
+        </div>
+    
+        </div>
+        <div class="my-5">
+            <div class="flex justify-end">
+                <button (click)="insertarFuncionarioModal()" class="bg-[#ff7043] text-white" mat-button>Nuevo <mat-icon class="hidden text-white sm:flex icon-size-5" [svgIcon]="'heroicons_outline:plus'"></mat-icon></button>
+            </div>
+        </div>
+        <div class="w-full">
+            <table mat-table [dataSource]="dataSource" class="rounded-6xl w-full p-5">
+            
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Nombre </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.nombre}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="cargo">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Cargo </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.cargo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Acciones </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        <button (click)="insertarFuncionarioModal(element)" class="ml-2" mat-button><mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:external-link'"></mat-icon></button>
+                        <button class="ml-2" mat-button><mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:trash'"></mat-icon></button>
+                    </td>
+                </ng-container>
+                      
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</section>

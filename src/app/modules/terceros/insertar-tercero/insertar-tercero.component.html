@@ -1,0 +1,187 @@
+<div class="flex flex-col w-full px-5">
+
+    <div class="border-b pb-2 mt-10 text-3xl font font-bold upercase">
+        <h2>Terceros</h2>
+    </div>
+
+    <div class="w-full">
+
+                <form [formGroup]="perfilForm" class="w-full">
+                    
+                    <div class="border-b pb-2 mt-10 text-xl font font-bold upercase">
+                        <h2>Nuevo</h2>
+                    </div>
+                
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-1 mt-5">
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Razón social</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'razonSocial'"
+                                [placeholder]="'Job title'">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-5">
+                        
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Tipo documento</mat-label>
+                            <input
+                                matInput
+                                [formControlName]="'tipoDocumento'"
+                                [placeholder]="'Company'">
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Documento</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:identification'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'documento'"
+                                [placeholder]="'Company'"
+                                >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 mt-5">
+                        
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>País</mat-label>
+                            <mat-icon
+                            matPrefix
+                            class="hidden sm:flex icon-size-5"
+                            [svgIcon]="'heroicons_outline:globe'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'pais'"
+                                [placeholder]="'Company'">
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Departamento</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:globe'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'departamento'"
+                                [placeholder]="'Company'"
+                                >
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Municipio</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:globe'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'municipio'"
+                                [placeholder]="'Company'"
+                                >
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 mt-5">
+                        
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Centros poblados</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:qrcode'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'centrosPoblados'"
+                                [placeholder]="'Company'">
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Dirección</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:map'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'departamento'"
+                                [placeholder]="'direccion'"
+                                >
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 mt-5">
+                        
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Teléfono</mat-label>
+                            <mat-icon
+                            matPrefix
+                            class="hidden sm:flex icon-size-5"
+                            [svgIcon]="'heroicons_outline:phone'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'telefono'"
+                                [placeholder]="'Company'">
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Celular</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:device-mobile'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'departamento'"
+                                [placeholder]="'celular'"
+                                >
+                        </mat-form-field>
+
+                        <mat-form-field class="fuse-mat-no-subscript w-full">
+                            <mat-label>Email</mat-label>
+                            <mat-icon
+                                matPrefix
+                                class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:mail'"></mat-icon>
+                            <input
+                                matInput
+                                [formControlName]="'email'"
+                                [placeholder]="'direccion'"
+                                >
+                        </mat-form-field>
+
+                    </div>
+
+
+                    <div class="flex justify-end mt-10 py-4">
+
+                        <button
+                            class="ml-2"
+                            mat-flat-button
+                            [color]="'primary'"
+                            [disabled]="perfilForm.invalid">
+                            Guardar
+                        </button>
+
+                        <button
+                            class="ml-2"
+                            mat-flat-button
+                            [color]="'primary'"
+                            [disabled]="perfilForm.invalid">
+                            Cerrar
+                        </button>
+
+                    </div>
+                
+                </form>
+
+    </div>
+</div>
