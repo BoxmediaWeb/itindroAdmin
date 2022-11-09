@@ -40,6 +40,13 @@ import { RolesPermisosComponent } from './roles-permisos/roles-permisos.componen
 import { RecortarImagenComponent } from './recortar-imagen/recortar-imagen.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CrearModalComponent } from './crear-modal/crear-modal.component';
+import { DetalleComponent } from './detalle/detalle.component';
+import { RolesComponent } from './roles/roles.component';
+import { CrearRoleComponent } from './crear-role/crear-role.component';
+import { PermisosComponent } from './permisos/permisos.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { EditarPasswordComponent } from './editar-password/editar-password.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 const usuariosRoutes: Route[] = [
@@ -47,7 +54,15 @@ const usuariosRoutes: Route[] = [
         path     : '',
         component: UsuariosComponent,
         children   : [
-            {path: '', redirectTo: 'usuarios'},
+            //{path: '', redirectTo: 'usuarios'},
+            {path: '',   redirectTo: 'detalle', pathMatch: 'full'},
+            {path     : 'detalle',component: DetalleComponent},
+            {path     : 'roles',component: RolesComponent},
+            {path     : 'permiso/role/:id', component: PermisosComponent},
+
+
+
+            
             {path: 'usuarios', component:ListaUsuariosComponent},
             {path: 'clientes', component:ListaClientesComponent},
             {path: 'conductores', component:ListaConductoresComponent},
@@ -70,7 +85,12 @@ const usuariosRoutes: Route[] = [
             ListaVendedoresComponent,
             RolesPermisosComponent,
             RecortarImagenComponent,
-            CrearModalComponent
+            CrearModalComponent,
+            DetalleComponent,
+            RolesComponent,
+            CrearRoleComponent,
+            PermisosComponent,
+            EditarPasswordComponent
   ],
     imports     : [
         RouterModule.forChild(usuariosRoutes),
@@ -178,7 +198,11 @@ const usuariosRoutes: Route[] = [
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
-        ImageCropperModule
+        ImageCropperModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatSlideToggleModule
+
     ]
 })
 export class UsuariosModule

@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    //serverUrl: 'http://localhost:3000'
-    serverUrl: 'http://apinode.trituradoselzulia.com'
+    serverUrl: 'http://localhost:3000'
+    //serverUrl: 'http://apinode.trituradoselzulia.com'
 };
 
 /*

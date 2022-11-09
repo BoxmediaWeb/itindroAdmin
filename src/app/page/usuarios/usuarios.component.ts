@@ -17,56 +17,75 @@ import { UsuariosService } from './usuarios.service';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-
-  @ViewChild('drawer') drawer: MatDrawer;
-  drawerMode: 'over' | 'side' = 'side';
-  drawerOpened: boolean = true;
-  panels: any[] = [];
-  dataUsers: any[] = [];
-  dataRoles: any[] = [];
-  selectedPanel: string = 'usuarios';
-  private _unsubscribeAll: Subject<any> = new Subject<any>();
-
-
-
-
+    @ViewChild('drawer') drawer: MatDrawer;
+    drawerMode: 'over' | 'side' = 'side';
+    drawerOpened: boolean = true;
+    panels: any[] = [];
+    dataUsers: any[] = [];
+    dataRoles: any[] = [];
+    selectedPanel: string = 'usuarios';
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    limit = 10;
+    offset = 0;
+    pageSize = 10;
+    resultsLength = 0;
   
-
-      /**
-     * Get the details of the panel
-     *
-     * @param id
-     */
-       getPanelInfo(id: string): any
-       {
-           return this.panels.find(panel => panel.id === id);
-       }
-
-
-           /**
-     * Navigate to the panel
-     *
-     * @param panel
-     */
-    goToPanel(panel: string): void
-    {
-        this._usuariosService.setPanel(panel);
-        this.irListaUsuarios(panel);
-
+    constructor(
+      private _changeDetectorRef: ChangeDetectorRef,
+      private _fuseMediaWatcherService: FuseMediaWatcherService,
+      private _apiService: ApiService,
+      private _router:Router,
+    ) { }
+  
+  
+  
+        /**
+       * Get the details of the panel
+       *
+       * @param id
+       */
+         getPanelInfo(id: string): any
+         {
+             return this.panels.find(panel => panel.id === id);
+         }
+  
+  
+             /**
+       * Navigate to the panel
+       *
+       * @param panel
+       */
+      goToPanel(panel: string): void
+      {
+          this.selectedPanel = panel;
+  
+          // Close the drawer on 'over' mode
+          //if ( this.drawerMode === 'over' )
+          //{
+              //this.drawer.close();
+          //}
+      }
+  
+      irAVista(panel=null) {
+        this._router.navigate([`usuarios/${panel.link}`]);
+        this.goToPanel(panel.id);
+      }
+  
+      irAVista2(vista) {
+        this._router.navigate([`usuarios/${vista}`]);
+      }
+  
+  
+      pageChange(event: PageEvent) {
+        this.limit = event.pageSize;
+        this.offset = event.pageSize * event.pageIndex;
+        //this.getUser();
+        this.dataUsers;
+        this.resultsLength;
     }
-
-    irListaUsuarios(panel) {
-        this._router.navigate([`/usuarios/${panel}`]);
-    }
-
-
-
-
-  constructor(private _formBuilder: FormBuilder,public _dialog: MatDialog, private _apiService: ApiService, private _fuseMediaWatcherService: FuseMediaWatcherService,private _changeDetectorRef: ChangeDetectorRef, private _usuariosService:UsuariosService,private _router:Router) { }
-
-  ngOnInit(): void {
-    
-    this.panels = [
+  
+    ngOnInit(): void {
+      this.panels = [
         {
             id         : 'usuarios',
             icon       : 'heroicons_outline:user-circle',
@@ -75,72 +94,44 @@ export class UsuariosComponent implements OnInit {
             link: "detalle"
         },
         {
-            id         : 'clientes',
-            icon       : 'heroicons_outline:hand',
-            title      : 'Clientes',
-            description: 'Asigna roles a los usuarios según sus asignaciones',
-            link: "clientes"
-        },
-        {
-            id         : 'conductores',
-            icon       : 'heroicons_outline:truck',
-            title      : 'Conductores',
-            description: 'Asigna roles a los usuarios según sus asignaciones',
-            link: "roles"
-        },
-        {
-            id         : 'vendedores',
-            icon       : 'heroicons_outline:briefcase',
-            title      : 'Vendedores',
-            description: 'Asigna roles a los usuarios según sus asignaciones',
-            link: "roles"
-        },
-        {
-            id         : 'rolespermisos',
+            id         : 'roles',
             icon       : 'heroicons_outline:identification',
-            title      : 'Roles y permisos',
+            title      : 'Roles',
             description: 'Asigna roles a los usuarios según sus asignaciones',
-            link: "rolespermisos"
-    }
-  ];
-
-    this._usuariosService.getPanel().subscribe((data)=>{
-        this.selectedPanel = data;
+            link: "roles"
+        }
+        /*
+        {
+            id         : 'permisos',
+            icon       : 'heroicons_outline:lock-closed',
+            title      : 'Permisos',
+            description: 'Añade o elimina permisos a los usuarios según sus roles',
+            link: "abc"
+        }
+        */
+    ];
+  
+    this.irAVista({link:'detalle',id:'usuarios'});
+  
+    // Subscribe to media changes
+    this._fuseMediaWatcherService.onMediaChange$
+    .pipe(takeUntil(this._unsubscribeAll))
+    .subscribe(({matchingAliases}) => {
+  
+        // Set the drawerMode and drawerOpened
+        if ( matchingAliases.includes('lg') )
+        {
+            this.drawerMode = 'side';
+            this.drawerOpened = true;
+        }
+        else
+        {
+            this.drawerMode = 'over';
+            this.drawerOpened = false;
+        }
+  
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     });
-
-
-  // Subscribe to media changes
-  this._fuseMediaWatcherService.onMediaChange$
-  .pipe(takeUntil(this._unsubscribeAll))
-  .subscribe(({matchingAliases}) => {
-
-      // Set the drawerMode and drawerOpened
-      if ( matchingAliases.includes('lg') )
-      {
-          this.drawerMode = 'side';
-          this.drawerOpened = true;
-      }
-      else
-      {
-          this.drawerMode = 'over';
-          this.drawerOpened = false;
-      }
-
-      // Mark for check
-      this._changeDetectorRef.markForCheck();
-  });
-
-
-
-
-    
-
-
-
-    
-  }
-
-
-
-
+    }
 }

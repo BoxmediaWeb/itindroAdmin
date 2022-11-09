@@ -5,7 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'app/core/api/api.service';
 import { ConcretoComponent } from 'app/page/tipo-concreto/concreto/concreto.component';
-import { CrearModalComponent } from 'app/page/usuarios/crear-modal/crear-modal.component';
+//import { CrearModalComponent } from 'app/page/usuarios/crear-modal/crear-modal.component';
 import moment from 'moment';
 import { Subject } from 'rxjs';
 
@@ -272,7 +272,7 @@ export class PedidoComponent implements OnInit {
 
   
   crearCliente() {
-    const dialogRef = this._dialog.open(CrearModalComponent, {
+    /*const dialogRef = this._dialog.open(CrearModalComponent, {
       minWidth: '500px',
       maxWidth: '500px',
       maxHeight: '700px',
@@ -284,11 +284,11 @@ export class PedidoComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result: any) => {
       
-    });
+    });*/
   }
 
   crearConductor() {
-    const dialogRef = this._dialog.open(CrearModalComponent, {
+    /*const dialogRef = this._dialog.open(CrearModalComponent, {
       minWidth: '500px',
       maxWidth: '500px',
       maxHeight: '700px',
@@ -300,11 +300,11 @@ export class PedidoComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result: any) => {
       
-    });
+    });*/
   }
 
   crearVendedor() {
-    const dialogRef = this._dialog.open(CrearModalComponent, {
+    /*const dialogRef = this._dialog.open(CrearModalComponent, {
       minWidth: '500px',
       maxWidth: '500px',
       maxHeight: '700px',
@@ -316,7 +316,7 @@ export class PedidoComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result: any) => {
       
-    });
+    });*/
   }
 
 

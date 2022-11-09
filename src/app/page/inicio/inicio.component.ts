@@ -9,7 +9,7 @@ import moment from 'moment';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
-import { CrearModalComponent } from '../usuarios/crear-modal/crear-modal.component';
+//import { CrearModalComponent } from '../usuarios/crear-modal/crear-modal.component';
 
 
 export interface PeriodicElement {

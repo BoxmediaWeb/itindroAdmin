@@ -47,4 +47,31 @@ export class ApiService {
     return this._httpClient.delete(`${environment.serverUrl}/api/${nombreQuery}/${idData}`,this.httpOptions);
   }
 
+
+
+
+  /* Queries mejorados */
+
+  
+  //Api de node
+
+  public postQueryFile(nombreQuery,dataForm): Observable<any>{
+    return this._httpClient.post(`${environment.serverUrl}/${nombreQuery}`,dataForm);
+  }
+
+  public getQuery(nombreQuery,queryParams): Observable<any>{
+    return this._httpClient.get(`${environment.serverUrl}/${nombreQuery}?${queryParams}`);
+  }
+
+  public postQuery(nombreQuery,dataQuery): Observable<any>{
+    return this._httpClient.post(`${environment.serverUrl}/${nombreQuery}`,dataQuery);
+  }
+
+  public deleteQuery(nombreQuery,queryParams): Observable<any>{
+    return this._httpClient.delete(`${environment.serverUrl}/${nombreQuery}?${queryParams}`);
+  }
+
+
+
+
 }

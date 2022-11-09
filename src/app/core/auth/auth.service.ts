@@ -82,6 +82,8 @@ export class AuthService
                 //Guarda el token
                 this.accessToken = response.token;
 
+                localStorage.setItem('refreshToken', response.refreshToken);
+
                 //Activar el estado de autenticación
                 this._authenticated = true;
 
@@ -89,6 +91,7 @@ export class AuthService
                 this._userService.user = response.user;
 
                 console.log("Este es el usuario de la respuesta =>", response.user);
+                localStorage.setItem('userNick', response.user.nick);
 
                 
                 return of(response);
@@ -102,8 +105,9 @@ export class AuthService
     signInUsingToken(): Observable<any>
     {
         // Renew token
-        return this._httpClient.post('api/auth/refresh-access-token', {
-            accessToken: this.accessToken
+        return this._httpClient.post(`${environment.serverUrl}/login/refresh`, {
+            refreshToken: localStorage.getItem('refreshToken'),
+            nick: localStorage.getItem('userNick')
         }).pipe(
             catchError(() =>
 
@@ -113,7 +117,9 @@ export class AuthService
             switchMap((response: any) => {
 
                 // Store the access token in the local storage
-                //this.accessToken = response.accessToken; Renueva el token, refrescar
+                this.accessToken = response.token;
+
+                localStorage.setItem('accessToken', response.token);
 
                 // Set the authenticated flag to true
                 this._authenticated = true;
@@ -132,8 +138,12 @@ export class AuthService
      */
     signOut(): Observable<any>
     {
+
         // Remove the access token from the local storage
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userNick');
 
         // Set the authenticated flag to false
         this._authenticated = false;

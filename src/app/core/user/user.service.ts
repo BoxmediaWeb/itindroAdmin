@@ -59,9 +59,8 @@ export class UserService
             currentUser = data;
         });
 
-        return this._httpClient.post<User>(`${environment.serverUrl}/authuser`,{id:localStorage.getItem('userId')}).pipe(
+        return this._httpClient.get<User>(`${environment.serverUrl}/login/authuser`).pipe(
                 tap((user) => {
-                    console.log("Este es el user devuelto en el servicio", user);
                     this._user.next(user);
                 })
         );
@@ -71,7 +70,6 @@ export class UserService
                 //this._user.next(user);
         //    })
         //);
-
     }
 
     /**

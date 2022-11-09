@@ -60,6 +60,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { VentanillaComponent } from './modules/ventanilla/ventanilla.component';
 import { TercerosComponent } from './modules/terceros/terceros.component';
 import { InventarioGestionComponent } from './modules/inventario-gestion/inventario-gestion.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -209,7 +210,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         MatSnackBarModule,
         NgxChartsModule,
         FormsModule,
-        FullCalendarModule
+        FullCalendarModule,
+        MatExpansionModule
     ],
     bootstrap   : [
         AppComponent
