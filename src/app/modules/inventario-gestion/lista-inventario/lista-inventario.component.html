@@ -1,0 +1,166 @@
+<section class="flex flex-col w-full px-10 min-h-[1000px]">
+    <div class="flex justify-between my-10 w-full">
+        <h2 class="text-3xl font-bold">Inventario gestión</h2>
+    </div>
+            
+    <div class="flex justify-center">
+    
+
+        <div class="flex justify-start w-full">
+            <form [formGroup]="filtroForm" class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                    
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_outline:search'"></mat-icon>
+                    <input
+                        (ngModelChange)="buscarNombre($event)"
+                        matInput
+                        [formControlName]="'nombre'">
+                </mat-form-field>
+
+            </form>
+        </div>
+
+        <!--
+        <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+        </mat-paginator>
+        -->
+    
+        </div>
+        <div class="my-5">
+            <div class="flex justify-end">
+                <button (click)="insertarInventario()" class="bg-[#C62828] text-white" mat-button>Nuevo</button>
+                <button class="ml-2 bg-[#C62828] text-white" mat-button>PDF</button>
+                <button class="ml-2 bg-[#016e38] text-white" mat-button>Excel</button>
+            </div>
+        </div>
+        <div class="w-full overflow-x-scroll">
+            <table mat-table [dataSource]="dataSource" class="rounded-6xl w-[2000px] p-5">
+            
+                <ng-container matColumnDef="oficinaProductora">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Oficina productora </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">{{element?.oficinaProductora}}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="serie">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Serie </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.serie}} </td>
+                </ng-container>
+                      
+                <ng-container matColumnDef="subSerie">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Subserie </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.subSerie}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="identificacionExpediente">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Identificación Expediente </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.identificacionExpediente}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="fechaInicial">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Fecha Inicial </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.fechaInicial}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="fechaFinal">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Fecha Final </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.fechaFinal}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="unidadConservacion">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Unidad Conservación </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element?.unidadConservacion}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="soporte">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Sporte </th>
+                    <td mat-cell *matCellDef="let element" class="text-center flex justify-center">
+                        {{element?.soporte}}
+                    </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="frecuenciaConsulta">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Frecuencia Consulta </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.frecuenciaConsulta}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="folios">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Folios </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.folios}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tdr">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> TDR </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.tdr}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fechaTranferir">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Fecha transferir </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.fechaTranferir}}
+                    </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="pasillo">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Pasillo </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.pasillo}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estante">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Estante </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.estante}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fila">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Fila </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.fila}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="caja">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Caja </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.caja}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="legajo">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Legajo </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.legajo}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="notas">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Notas </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        {{element?.notas}}
+                    </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Acciones </th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        <button (click)="editarInventario(element)"><mat-icon class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:external-link'"></mat-icon></button>
+                    </td>
+                </ng-container>
+                      
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</section>
+

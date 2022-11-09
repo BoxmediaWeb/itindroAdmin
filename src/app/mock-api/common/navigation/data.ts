@@ -32,6 +32,21 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ]
     },
     {
+        id   : 'inventario-gestion',
+        title: 'Inventario gestión',
+        type : 'collapsable',
+        icon : 'heroicons_outline:duplicate',
+        children: [
+            {
+                id   : 'inventario-gestion',
+                title: 'Inventario gestión',
+                type : 'basic',
+                icon : 'heroicons_outline:archive',
+                link : '/inventario-gestion'
+            }
+        ]
+    },
+    {
         id   : 'usuarios',
         title: 'Usuarios',
         type : 'basic',

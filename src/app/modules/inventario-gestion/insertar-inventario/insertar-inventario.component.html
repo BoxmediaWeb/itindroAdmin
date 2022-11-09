@@ -1,0 +1,254 @@
+<div class="flex flex-col w-full mx-10">
+
+    <div class="border-b text-3xl font font-bold upercase mt-10">
+        <h2>Funcionarios</h2>
+    </div>
+
+    <div class="w-full">
+
+        <form [formGroup]="funcionarioForm" class="w-full">
+                    
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Sección</mat-label>
+                    <!-- (ngModelChange)="filtraRole($event)"-->
+                    <mat-select
+                        matInput
+                        [formControlName]="'seccion'">
+                        <mat-option [value]="'todo'">Todo</mat-option>
+                        <mat-option [value]="'vendedor'">Vendedor</mat-option>
+                        <mat-option [value]="'conductor'">Conductor</mat-option>
+                        <mat-option [value]="'cliente'">Cliente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Serie</mat-label>
+                    <!-- (ngModelChange)="filtraRole($event)"-->
+                    <mat-select
+                        matInput
+                        [formControlName]="'serie'">
+                        <mat-option [value]="'todo'">Todo</mat-option>
+                        <mat-option [value]="'vendedor'">Vendedor</mat-option>
+                        <mat-option [value]="'conductor'">Conductor</mat-option>
+                        <mat-option [value]="'cliente'">Cliente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Cargo</mat-label>
+                    <!-- (ngModelChange)="filtraRole($event)"-->
+                    <mat-select
+                        matInput
+                        [formControlName]="'cargo'">
+                        <mat-option [value]="'todo'">Todo</mat-option>
+                        <mat-option [value]="'vendedor'">Vendedor</mat-option>
+                        <mat-option [value]="'conductor'">Conductor</mat-option>
+                        <mat-option [value]="'cliente'">Cliente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Unidad de Conservación</mat-label>
+                    <!-- (ngModelChange)="filtraRole($event)"-->
+                    <mat-select
+                        matInput
+                        [formControlName]="'unidadConservacion'">
+                        <mat-option [value]="'todo'">Todo</mat-option>
+                        <mat-option [value]="'vendedor'">Vendedor</mat-option>
+                        <mat-option [value]="'conductor'">Conductor</mat-option>
+                        <mat-option [value]="'cliente'">Cliente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Folios</mat-label>
+                    <input
+                        matInput
+                        type="number"
+                        [formControlName]="'folios'"
+                        [placeholder]="'direccion'"
+                        >
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Soporte</mat-label>
+                    <mat-select
+                        matInput
+                        [formControlName]="'soporte'">
+                        <mat-option [value]="'fisico'">Físico</mat-option>
+                        <mat-option [value]="'digital'">Digital</mat-option>
+                        <mat-option [value]="'cd'">CD</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Frecuencia de consulta</mat-label>
+                    <mat-select
+                        matInput
+                        [formControlName]="'frecuenciaConsulta'">
+                        <mat-option [value]="1">1-5</mat-option>
+                        <mat-option [value]="2">5-10</mat-option>
+                        <mat-option [value]="3">Más de 10</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Fecha inicio</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'fechaInicio'"
+                        [placeholder]="'Company'"
+                        [matDatepicker]="picker"
+                        >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Fecha fin</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'fechaFin'"
+                        [placeholder]="'Company'"
+                        [matDatepicker]="picker2"
+                        >
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>TDR</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'tdr'"
+                        [placeholder]="'direccion'"
+                        >
+                </mat-form-field>
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Fecha a transferir</mat-label>
+                    <input
+                        matInput
+                        [formControlName]="'fechaTranferir'"
+                        [placeholder]="'Company'"
+                        [matDatepicker]="picker3"
+                        >
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>identificación expediente</mat-label>
+                    <textarea
+                        matInput
+                        [formControlName]="'identificacionExpediente'"
+                        type="number"
+                        cols="30"
+                        rows="10">
+                    </textarea>
+                </mat-form-field>
+
+            </div>
+
+
+            <div class="border-b text-3xl font font-bold upercase mt-10">
+                <h2>Ubicación</h2>
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Pasillo</mat-label>
+                    <input
+                        type="number"
+                        matInput
+                        [formControlName]="'pasillo'"
+                        [placeholder]="'direccion'"
+                        >
+                </mat-form-field>
+
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Estante</mat-label>
+                    <input
+                        type="number"
+                        matInput
+                        [formControlName]="'estante'"
+                        [placeholder]="'estante'"
+                        >
+                </mat-form-field>
+
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Fila</mat-label>
+                    <input
+                        type="number"
+                        matInput
+                        [formControlName]="'fila'"
+                        [placeholder]="'direccion'"
+                        >
+                </mat-form-field>
+
+            </div>
+
+            <div class="grid gap-2 grid-cols-1 sm:grid-cols-3 w-full mt-5">
+                        
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Notas</mat-label>
+                    <textarea
+                        matInput
+                        [formControlName]="'fila'"
+                        type="number"
+                        cols="30"
+                        rows="10">
+                    </textarea>
+                </mat-form-field>
+
+            </div>
+                
+        </form>
+
+    </div>
+
+    <div class="flex justify-end mt-5 py-4">
+        <button
+            class="ml-2"
+            mat-flat-button
+            [color]="'primary'"
+            [disabled]="funcionarioForm.invalid">
+            Guardar
+        </button>
+
+        <button
+            class="ml-2"
+            mat-flat-button
+            [color]="'primary'"
+            [disabled]="funcionarioForm.invalid">
+            Cerrar
+        </button>
+    </div>
+
+</div>

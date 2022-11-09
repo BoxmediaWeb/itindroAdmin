@@ -59,6 +59,7 @@ import timeGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { VentanillaComponent } from './modules/ventanilla/ventanilla.component';
 import { TercerosComponent } from './modules/terceros/terceros.component';
+import { InventarioGestionComponent } from './modules/inventario-gestion/inventario-gestion.component';
 
 
 
@@ -85,7 +86,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         EstadisticasComponent,
         CalendarioComponent,
         VentanillaComponent,
-        TercerosComponent
+        TercerosComponent,
+        InventarioGestionComponent
     ],
     imports     : [
         BrowserModule,
