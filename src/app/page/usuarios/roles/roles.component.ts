@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiService } from 'app/core/api/api.service';
+import { ConfirmacionService } from 'app/servicios/confirmacion.service';
 import { CrearRoleComponent } from '../crear-role/crear-role.component';
 
 @Component({
@@ -15,7 +16,7 @@ export class RolesComponent implements OnInit {
   dataRoles:any[]=[];
   modulosActivados = {}
 
-  constructor(private _apiService: ApiService, private _router:Router,public _dialog: MatDialog) { }
+  constructor(private _apiService: ApiService, private _router:Router,public _dialog: MatDialog,private _confirmacionServicer: ConfirmacionService,) { }
 
   getModulos(){
     const nombreQuery='modulos';
@@ -71,6 +72,40 @@ export class RolesComponent implements OnInit {
       this.getRoles();
       this.dataRoles;
     });
+  }
+
+
+  modalConfirmacionBorrar(role): void
+  {
+      
+      const dialogRef = this._confirmacionServicer.open();
+
+      dialogRef.afterClosed().subscribe((result) => {
+          console.log(result);
+          if(result=="confirmed"){
+            this.deleteRole(role);
+          }else{
+            console.log("Ha cancelado la operación");
+          }
+      });
+  }
+
+
+  deleteRole(role){
+    const nombreQuery =`roles/${role.id}`;
+    const queryParams = '';
+    
+  
+    this._apiService.deleteQuery(nombreQuery,'').
+    subscribe((response) => {
+      console.log("Esta es la respuesta de la data =>", queryParams);
+      this.getRoles();
+      this.dataRoles;
+     },
+     error=>{
+       console.log(error);
+     }
+     );
   }
   
 

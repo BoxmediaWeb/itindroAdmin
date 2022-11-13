@@ -79,6 +79,8 @@ export const appRoutes: Route[] = [
             {path: 'ventanilla', loadChildren: () => import('app/modules/ventanilla/ventanilla.module').then(m => m.VentanillaModule)},
             {path: 'terceros', loadChildren: () => import('app/modules/terceros/terceros.module').then(m => m.TercerosModule)},
             {path: 'inventario-gestion', loadChildren: () => import('app/modules/inventario-gestion/inventario-gestion.module').then(m => m.InventarioGestionModule)},
+            {path: 'ccd', loadChildren: () => import('app/modules/gestion-ccd/gestion-ccd.module').then(m => m.GestionCCDModule)},
+            {path: 'trd', loadChildren: () => import('app/modules/gestion-trd/gestion-trd.module').then(m => m.GestionTRDModule)},
 
             {path: 'inicio', loadChildren: () => import('app/page/inicio/inicio.module').then(m => m.InicioModule)},
             {path: 'despachos', loadChildren: () => import('app/page/despachos/despachos.module').then(m => m.DespachosModule)},

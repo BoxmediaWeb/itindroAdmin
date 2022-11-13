@@ -32,6 +32,28 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ]
     },
     {
+        id   : 'trd',
+        title: 'TRD',
+        type : 'collapsable',
+        icon : 'heroicons_outline:table',
+        children: [
+            {
+                id   : 'trd',
+                title: 'TRD',
+                type : 'basic',
+                icon : 'heroicons_outline:archive',
+                link : '/trd'
+            },
+            {
+                id   : 'ccd',
+                title: 'CCD',
+                type : 'basic',
+                icon : 'heroicons_outline:archive',
+                link : '/ccd'
+            }
+        ]
+    },
+    {
         id   : 'inventario-gestion',
         title: 'Inventario gestión',
         type : 'collapsable',

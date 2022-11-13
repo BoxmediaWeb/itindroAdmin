@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    serverUrl: 'http://localhost:3000'
-    //serverUrl: 'http://apinode.trituradoselzulia.com'
+    //serverUrl: 'http://localhost:3000'
+    serverUrl: 'http://api.itindro.co'
 };

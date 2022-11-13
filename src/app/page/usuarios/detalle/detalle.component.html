@@ -11,7 +11,7 @@
             Usuarios
         </div>
 
-        <button (click)="irAVista('nuevo')" class="hidden sm:inline-flex ml-3" mat-flat-button [color]="'primary'">
+        <button (click)="irAVista('nuevo')" class="hidden sm:inline-flex ml-3 bg-[#ff7043] text-white" mat-flat-button>
             <mat-icon
                 class="icon-size-5"
                 [svgIcon]="'heroicons_solid:user-add'"></mat-icon>
@@ -31,17 +31,17 @@
 
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef class="text-center"> Id </th>
-              <td mat-cell *matCellDef="let element" class="text-center mb-8"> {{element.id}} </td>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.id}} </td>
             </ng-container>
           
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef class="text-center"> Nombre </th>
-              <td mat-cell *matCellDef="let element" class="text-center mb-8"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="nick">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> Nick </th>
-                <td mat-cell *matCellDef="let element" class="text-center mb-8">
+                <td mat-cell *matCellDef="let element" class="text-center">
                     <span class="bg-[#CFD8DC] text-[#607D8B] rounded-full text-md px-1 font-bold">
                         @{{element.nick}}
                     </span>
@@ -50,33 +50,26 @@
 
             <ng-container matColumnDef="rol">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> Role </th>
-                <td mat-cell *matCellDef="let element" class="text-center mb-8"> {{element.Role.nombre}} </td>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.Role.nombre}} </td>
             </ng-container>
 
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> Email </th>
-                <td mat-cell *matCellDef="let element" class="text-center mb-8"> {{element.email}} </td>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.email}} </td>
             </ng-container>
 
             <ng-container matColumnDef="avatar">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> Avatar </th>
                 <td mat-cell *matCellDef="let element">
-                    <img *ngIf="element.avatar" class="w-12 h-12 rounded-full my-2" [src]="getImgAvatar(element.avatar)" alt="avatar">
+                    <img *ngIf="element.avatar" class="w-10 h-10 rounded-full" [src]="getImgAvatar(element.avatar)" alt="avatar">
                     <mat-icon *ngIf="!element.avatar" class="w-10 h-10" [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
                 </td>
             </ng-container>
 
-            <!--
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> Status </th>
-                <td mat-cell *matCellDef="let element" class="text-center mb-8"> {{element.status}} </td>
-            </ng-container>
-            -->
-
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> Acciones </th>
-                <td mat-cell *matCellDef="let element" class="text-center flex justify-center">
-                    <div class="flex">
+                <td mat-cell *matCellDef="let element" class="text-center">
+                
                         <button
                             *ngIf="element.role!='administrador'"
                             mat-button
@@ -96,7 +89,6 @@
                             [svgIcon]="'heroicons_outline:trash'"></mat-icon>
                         </button>
 
-                    </div>
                 </td>
             </ng-container>
           

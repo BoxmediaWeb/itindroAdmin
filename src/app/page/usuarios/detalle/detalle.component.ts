@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { ApiService } from 'app/core/api/api.service';
+import { ConfirmacionService } from 'app/servicios/confirmacion.service';
 import { environment } from 'environments/environment';
 
 @Component({
@@ -30,7 +31,7 @@ export class DetalleComponent implements OnInit {
     private _apiService: ApiService,
     private _router:Router,
     private _snackBar: MatSnackBar,
-    //private _confirmacionServicer: ConfirmacionService,
+    private _confirmacionServicer: ConfirmacionService,
   ) { }
   
   getUser(){
@@ -65,7 +66,7 @@ export class DetalleComponent implements OnInit {
 
   modalConfirmacionBorrar(usuario): void
   {
-      /*
+      
       const dialogRef = this._confirmacionServicer.open();
 
       dialogRef.afterClosed().subscribe((result) => {
@@ -75,7 +76,7 @@ export class DetalleComponent implements OnInit {
           }else{
             console.log("Ha cancelado la operación");
           }
-      });*/
+      });
   }
 
 

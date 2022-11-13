@@ -18,9 +18,8 @@
 
         <button
             (click)="crearRolesModal()"
-            class="hidden sm:inline-flex ml-3"
-            mat-flat-button
-            [color]="'primary'">
+            class="hidden sm:inline-flex ml-3 bg-[#ff7043] text-white"
+            mat-flat-button>
                 <mat-icon
                     class="icon-size-5"
                     [svgIcon]="'heroicons_solid:user-add'"></mat-icon>
@@ -52,6 +51,7 @@
                                 ></mat-icon>
                         </ng-container>-->
                         <button
+                            (click)="modalConfirmacionBorrar(role)"
                             mat-stroked-button>
                                 <mat-icon
                                     class="icon-size-5 text-[#EF5350]"

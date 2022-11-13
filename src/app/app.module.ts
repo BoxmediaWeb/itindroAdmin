@@ -61,6 +61,8 @@ import { VentanillaComponent } from './modules/ventanilla/ventanilla.component';
 import { TercerosComponent } from './modules/terceros/terceros.component';
 import { InventarioGestionComponent } from './modules/inventario-gestion/inventario-gestion.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { GestionCCDComponent } from './modules/gestion-ccd/gestion-ccd.component';
+import { GestionTRDComponent } from './modules/gestion-trd/gestion-trd.component';
 
 
 
@@ -88,7 +90,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         CalendarioComponent,
         VentanillaComponent,
         TercerosComponent,
-        InventarioGestionComponent
+        InventarioGestionComponent,
+        GestionCCDComponent,
+        GestionTRDComponent
     ],
     imports     : [
         BrowserModule,
